@@ -7,7 +7,7 @@ import json
 
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(("test-exchange-giza", 25000))
+    s.connect(("test-exch-giza", 25000))
     return s.makefile('rw', 1)
 
 def write(exchange, obj):
@@ -19,13 +19,21 @@ def read(exchange):
 
 
 
+def parseTradingData(market_response):
+    datum = json.load(market_response)
+    
+
 
 def main():
     exchange = connect()
-    write(exchange, {"type": "hello", "team": "TEAMNAME"})
+    write(exchange, {"type": "hello", "team": "GIZA"})
     hello_from_exchange = read(exchange)
     
-    print("The exchange replied:", hello_from_exchange, file=sys.stderr)
+    #print("The exchange replied:", hello_from_exchange, file=sys.stderr)   
+    while(1):
+        exch_book = read(exchange)
+        if ('symbol' in exch_book and exch_book['symbol'] == 'BOND'):
+            print("Book: ", exch_book, file=sys.stderr)
 
     
 

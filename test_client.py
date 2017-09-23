@@ -28,10 +28,7 @@ def main():
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
     
-stopBOND = false
 
-if not stopBOND:
-        bondTrader(exchange) 
     
 
 if __name__ == "__main__":

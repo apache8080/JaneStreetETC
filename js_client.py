@@ -7,7 +7,7 @@ import json
 
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(("test-exch-teamname", 25000))
+    s.connect(("test-exch-giza", 25000))
     return s.makefile('rw', 1)
 
 def write(exchange, obj):

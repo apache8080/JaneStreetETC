@@ -7,7 +7,7 @@ import json
 
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(("test-exch-giza", 25000))
+    s.connect(("production", 25000))
     return s.makefile('rw', 1)
 
 def write(exchange, obj):
@@ -21,6 +21,7 @@ def main():
     exchange = connect()
     write(exchange, {"type": "hello", "team": "TEAMNAME"})
     hello_from_exchange = read(exchange)
+    
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":

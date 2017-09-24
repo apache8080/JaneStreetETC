@@ -11,7 +11,7 @@ import time
 orders = []
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(("test-exch-GIZA", 25000))
+    s.connect(("production", 25000))
     return s.makefile('rw', 1)
 
 def write(exchange, obj):
@@ -64,7 +64,7 @@ def main():
             #print("Book: ", exch_book, file=sys.stderr)
             bondTrader(exchange)
 	
-	if(len(vale_orders) >= 5): 
+	if(len(vale_orders) >= 10): 
 	    order_id = randint(1, 200000000);
 	    write(exchange, {"type": "convert", "symbol": 'VALE', "order_id":order_id, "dir": "SELL", "size": 10 })
 	    print("CONVERTING")
